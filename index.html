@@ -1,282 +1,99 @@
-HTML
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ahmed ❤️</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Cairo', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      overflow-x: hidden;
-      color: white;
-      min-height: 100vh;
-      text-align: center;
-    }
-
-    .heart {
-      position: fixed;
-      color: rgba(255,255,255,0.15);
-      animation: float 8s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes float {
-      from {
-        transform: translateY(100vh) scale(0.5);
-      }
-      to {
-        transform: translateY(-10vh) scale(1.2);
-      }
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      padding: 30px;
-    }
-
-    /* شاشة الدخول */
-    #login-screen {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      animation: fadeIn 2s ease;
-    }
-
-    .glow {
-      font-size: 3rem;
-      color: #fff;
-      text-shadow: 0 0 10px #ff4da6, 0 0 20px #ff4da6, 0 0 40px #ff4da6;
-      margin-bottom: 20px;
-    }
-
-    .sub-text {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      color: #ffd6eb;
-    }
-
-    input {
-      padding: 14px;
-      width: 250px;
-      border: none;
-      outline: none;
-      border-radius: 15px;
-      text-align: center;
-      margin: 15px 0;
-      font-size: 1rem;
-    }
-
-    button {
-      padding: 12px 30px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(45deg, #ff4da6, #ff758c);
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 15px rgba(255,77,166,0.8);
-    }
-
-    /* المحتوى */
-    #main-content {
-      display: none;
-      padding-top: 50px;
-      animation: fadeIn 2s ease;
-    }
-
-    .section {
-      margin: 50px auto;
-      max-width: 900px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      padding: 25px;
-      border-radius: 25px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.08);
-    }
-
-    h2 {
-      color: #ffb3d9;
-      margin-bottom: 15px;
-    }
-
-    .typing {
-      border-right: 3px solid white;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 4s steps(40,end) forwards, blink .8s infinite;
-      margin: auto;
-      font-size: 1.2rem;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .gallery img {
-      width: 220px;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 20px;
-      border: 3px solid rgba(255,255,255,0.2);
-      transition: 0.4s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    #counter {
-      font-size: 2rem;
-      color: #ffd6eb;
-      margin-top: 15px;
-    }
-
-    ul {
-      list-style: none;
-      line-height: 2;
-      font-size: 1.1rem;
-    }
-
-    @keyframes fadeIn {
-      from {opacity:0;}
-      to {opacity:1;}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى أغلى الناس ❤️</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow-x: hidden;
+            color: #4a4a4a;
+        }
+        header { padding: 50px 20px; }
+        h1 { color: #d81b60; font-size: 2.8em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        .subtitle { font-size: 1.2em; color: #ad1457; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 8px solid white;
+            transition: transform 0.4s ease;
+        }
+        .gallery img:hover { transform: scale(1.03) rotate(1deg); }
+        .heart {
+            position: fixed;
+            top: -10px;
+            color: #ff4081;
+            font-size: 24px;
+            user-select: none;
+            z-index: 1000;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall { to { transform: translateY(105vh); } }
+        footer { padding: 40px; font-size: 0.9em; color: #880e4f; }
+    </style>
 </head>
 <body>
 
-  <!-- موسيقى -->
-  <audio autoplay loop>
-    <source src="your-song.mp3" type="audio/mpeg">
-  </audio>
+    <audio id="myAudio" src="سرك ايه.mp3" loop></audio>
 
-  <!-- شاشة الدخول -->
-  <div id="login-screen" class="container">
-    <h1 class="glow">Welcome Ahmed ❤️</h1>
-    <p class="sub-text">اكتب تاريخنا السري ✨</p>
-    <input type="password" id="password" placeholder="3122025">
-    <button onclick="checkPassword()">دخول</button>
-  </div>
+    <header>
+        <h1>كل لحظة معاك هي عيد ❤️</h1>
+        <p class="subtitle">اضغط في أي مكان في الصفحة عشان المفاجأة تبدأ..</p>
+    </header>
 
-  <!-- المحتوى الرئيسي -->
-  <div id="main-content" class="container">
+    <div class="gallery">
+        <img src="Snapchat-803055888.jpg">
+        <img src="Snapchat-1222503176.jpg">
+        <img src="Snapchat-1649663185.jpg">
+        <img src="Snapchat-637010882.jpg">
+        <img src="Snapchat-1275894081.jpg">
+        <img src="Snapchat-126097399.jpg">
+        <img src="Snapchat-1941497273.jpg">
+        <img src="Snapchat-1541570646.jpg">
+        <img src="Snapchat-1973324292.jpg">
+        <img src="Snapchat-1951374337.jpg">
+        <img src="IMG-20260427-WA0008.jpg">
+        <img src="IMG-20260427-WA0007.jpg">
+        <img src="IMG-20260427-WA0006.jpg">
+        <img src="IMG-20260427-WA0005.jpg">
+        <img src="IMG-20260427-WA0003.jpg">
+        </div>
 
-    <h1 class="glow">Ahmed ❤️</h1>
+    <footer>صُنع بكل حب ❤️</footer>
 
-    <!-- رسالة -->
-    <div class="section">
-      <h2>رسالة لأحمد ❤️</h2>
-      <p class="typing">يا أحمد... من أول يوم وإنت أجمل نعمة، وأحن قلب، وأحلى حاجة حصلتلي في حياتي كلها...</p>
-    </div>
+    <script>
+        document.body.addEventListener('click', function() {
+            var audio = document.getElementById('myAudio');
+            audio.play();
+            setInterval(createHeart, 400);
+        }, { once: true });
 
-    <!-- عداد -->
-    <div class="section">
-      <h2>بقالنا مع بعض ⏳</h2>
-      <div id="counter"></div>
-    </div>
-
-    <!-- الصور -->
-    <div class="section">
-      <h2>ذكرياتنا 📸</h2>
-      <div class="gallery">
-        <img src="photo1.jpg" alt="">
-        <img src="photo2.jpg" alt="">
-        <img src="photo3.jpg" alt="">
-      </div>
-    </div>
-
-    <!-- أسباب الحب -->
-    <div class="section">
-      <h2>ليه بحبك؟ 💌</h2>
-      <ul>
-        <li>لأنك أماني بعد خوفي</li>
-        <li>لأنك ضحكتي وقت زعلي</li>
-        <li>لأنك سندي وقلبي</li>
-        <li>ولأنك... أحمد ❤️</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <script>
-    // باسورد
-    function checkPassword() {
-      const password = document.getElementById("password").value;
-
-      if(password === "3122025") {
-        document.getElementById("login-screen").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-      } else {
-        alert("غلط يا أحمد ❤️");
-      }
-    }
-
-    // قلوب متحركة
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 15 + "px";
-      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
-    }
-
-    setInterval(createHeart, 500);
-
-    // عداد الأيام من 3/12/2025
-    const startDate = new Date("2025-12-03");
-
-    function updateCounter() {
-      const now = new Date();
-      const diff = now - startDate;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-      if(days >= 0){
-        document.getElementById("counter").innerText = days + " يوم ❤️";
-      } else {
-        document.getElementById("counter").innerText = "لسه مستنيين اليوم المميز ❤️";
-      }
-    }
-
-    updateCounter();
-  </script>
-
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.5;
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+    </script>
 </body>
-  </html>
+</html>
