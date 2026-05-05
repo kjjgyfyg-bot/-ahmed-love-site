@@ -13,9 +13,47 @@
             overflow-x: hidden;
             color: #4a4a4a;
         }
-        header { padding: 50px 20px; }
-        h1 { color: #d81b60; font-size: 2.8em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-        .subtitle { font-size: 1.2em; color: #ad1457; }
+        /* تصميم صفحة الباسوورد */
+        #login-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #f8bbd0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        input {
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #d81b60;
+            font-size: 1.2em;
+            text-align: center;
+            outline: none;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 30px;
+            background: #d81b60;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        /* تصميم العداد */
+        #counter-section {
+            background: rgba(255, 255, 255, 0.4);
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .counter-box { font-size: 1.5em; color: #ad1457; font-weight: bold; }
+
+        /* الجاليري والقلوب */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -25,64 +63,83 @@
             margin: 0 auto;
         }
         .gallery img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 20px;
+            width: 100%; height: 350px; object-fit: cover;
+            border-radius: 20px; border: 8px solid white;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border: 8px solid white;
-            transition: transform 0.4s ease;
         }
-        .gallery img:hover { transform: scale(1.03) rotate(1deg); }
         .heart {
-            position: fixed;
-            top: -10px;
-            color: #ff4081;
-            font-size: 24px;
-            user-select: none;
-            z-index: 1000;
-            pointer-events: none;
-            animation: fall linear forwards;
+            position: fixed; top: -10px; color: #ff4081; font-size: 24px;
+            pointer-events: none; animation: fall linear forwards; z-index: 1000;
         }
         @keyframes fall { to { transform: translateY(105vh); } }
-        footer { padding: 40px; font-size: 0.9em; color: #880e4f; }
+        #main-content { display: none; } /* مخفي حتى كتابة الباسوورد */
     </style>
 </head>
 <body>
 
-    <audio id="myAudio" src="سرك ايه.mp3" loop></audio>
+    <div id="login-screen">
+        <h2 style="color: #d81b60;">اكتب التاريخ السري ❤️</h2>
+        <input type="password" id="passInput" placeholder="ادخل الباسوورد هنا">
+        <button onclick="checkPass()">دخول</button>
+    </div>
 
-    <header>
-        <h1>كل لحظة معاك هي عيد ❤️</h1>
-        <p class="subtitle">اضغط في أي مكان في الصفحة عشان المفاجأة تبدأ..</p>
-    </header>
+    <div id="main-content">
+        <audio id="myAudio" src="سرك ايه.mp3" loop></audio>
 
-    <div class="gallery">
-        <img src="Snapchat-803055888.jpg">
-        <img src="Snapchat-1222503176.jpg">
-        <img src="Snapchat-1649663185.jpg">
-        <img src="Snapchat-637010882.jpg">
-        <img src="Snapchat-1275894081.jpg">
-        <img src="Snapchat-126097399.jpg">
-        <img src="Snapchat-1941497273.jpg">
-        <img src="Snapchat-1541570646.jpg">
-        <img src="Snapchat-1973324292.jpg">
-        <img src="Snapchat-1951374337.jpg">
-        <img src="IMG-20260427-WA0008.jpg">
-        <img src="IMG-20260427-WA0007.jpg">
-        <img src="IMG-20260427-WA0006.jpg">
-        <img src="IMG-20260427-WA0005.jpg">
-        <img src="IMG-20260427-WA0003.jpg">
+        <header style="padding: 40px 20px;">
+            <h1>كل لحظة معاك هي عيد ❤️</h1>
+            <div id="counter-section">
+                <p>إحنا مع بعض بقالنا:</p>
+                <div class="counter-box" id="timer"></div>
+            </div>
+        </header>
+
+        <div class="gallery">
+            <img src="Snapchat-803055888.jpg">
+            <img src="Snapchat-1222503176.jpg">
+            <img src="Snapchat-1649663185.jpg">
+            <img src="IMG-20260427-WA0008.jpg">
+            <img src="IMG-20260427-WA0007.jpg">
         </div>
-
-    <footer>صُنع بكل حب ❤️</footer>
+        
+        <footer style="padding: 40px;">صُنع بكل حب ❤️</footer>
+    </div>
 
     <script>
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById('myAudio');
-            audio.play();
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            if (pass === "3122025") {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                startEverything();
+            } else {
+                alert("الباسوورد غلط يا روحي، حاولي تاني!");
+            }
+        }
+
+        function startEverything() {
+            // تشغيل الموسيقى
+            document.getElementById('myAudio').play();
+            // بدء العداد
+            updateTimer();
+            setInterval(updateTimer, 1000);
+            // بدء القلوب
             setInterval(createHeart, 400);
-        }, { once: true });
+        }
+
+        function updateTimer() {
+            const startDate = new Date("2025-12-03"); // التاريخ 3/12/2025
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('timer').innerHTML = 
+                days + " يوم و " + hours + " ساعة و " + mins + " دقيقة و " + secs + " ثانية";
+        }
 
         function createHeart() {
             const heart = document.createElement('div');
